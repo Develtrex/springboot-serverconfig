@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+        <action>
+            <actionName>CUSTOM-spring config server filesystem dev</actionName>
+            <displayName>spring config server filesystem dev</displayName>
+            <goals>
+                <goal>spring-boot:run</goal>
+                <goal>-Dspring-boot.run.profiles=native,dev</goal>
+            </goals>
+        </action>
+    </actions>

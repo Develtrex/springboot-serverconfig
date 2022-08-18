@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration packagingData="true">
+    <springProfile name="prd">
+        <shutdownHook class="ch.qos.logback.core.hook.DelayingShutdownHook"/>
+        <include resource="org/springframework/boot/logging/logback/defaults.xml" />    
+        <property name="LOG_FILE" value="/usr/local/microservicios/log/servidor-configuracion.log"/>        
+        <property name="PATTERN_ELASTIC"  value="[%d{yyyy-MM-dd HH:mm:ss.SSS}] [${PID}] [${HOSTNAME}] [%thread] [%level] [%logger{36}@%method:%line] - %msg%n"/>
+        <appender name="appenderConsole" class="ch.qos.logback.core.ConsoleAppender">
+            <encoder>
+                <pattern>${PATTERN_ELASTIC}</pattern>
+                <charset>utf8</charset>
+            </encoder>
+        </appender>
+        <appender name="appenderFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <encoder>
+                <pattern>${PATTERN_ELASTIC}</pattern>
+            </encoder>
+            <file>${LOG_FILE}</file>
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <fileNamePattern>${LOG_FILE}.%d</fileNamePattern>
+                <maxHistory>50</maxHistory>
+            </rollingPolicy>
+        </appender>    
+        <root level="INFO">            
+            <appender-ref ref="appenderFile" />
+        </root>
+    </springProfile>
+    <springProfile name="tst">
+        <shutdownHook class="ch.qos.logback.core.hook.DelayingShutdownHook"/>
+        <include resource="org/springframework/boot/logging/logback/defaults.xml" />    
+        <property name="LOG_FILE" value="/usr/local/microservicios/log/servidor-configuracion.log"/>        
+        <property name="PATTERN_ELASTIC"  value="[%d{yyyy-MM-dd HH:mm:ss.SSS}] [${PID}] [${HOSTNAME}] [%thread] [%level] [%logger{36}@%method:%line] - %msg%n"/>
+        <appender name="appenderConsole" class="ch.qos.logback.core.ConsoleAppender">
+            <encoder>
+                <pattern>${PATTERN_ELASTIC}</pattern>
+                <charset>utf8</charset>
+            </encoder>
+        </appender>
+        <appender name="appenderFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <encoder>
+                <pattern>${PATTERN_ELASTIC}</pattern>
+            </encoder>
+            <file>${LOG_FILE}</file>
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <fileNamePattern>${LOG_FILE}.%d</fileNamePattern>
+                <maxHistory>50</maxHistory>
+            </rollingPolicy>
+        </appender>    
+        <root level="INFO">            
+            <appender-ref ref="appenderConsole" />
+            <appender-ref ref="appenderFile" />
+        </root>
+    </springProfile>
+    <springProfile name="qal">
+        <shutdownHook class="ch.qos.logback.core.hook.DelayingShutdownHook"/>
+        <include resource="org/springframework/boot/logging/logback/defaults.xml" />    
+        <property name="LOG_FILE" value="/usr/local/microservicios/log/servidor-configuracion.log"/>        
+        <property name="PATTERN_ELASTIC"  value="[%d{yyyy-MM-dd HH:mm:ss.SSS}] [${PID}] [${HOSTNAME}] [%thread] [%level] [%logger{36}@%method:%line] - %msg%n"/>
+        <appender name="appenderConsole" class="ch.qos.logback.core.ConsoleAppender">
+            <encoder>
+                <pattern>${PATTERN_ELASTIC}</pattern>
+                <charset>utf8</charset>
+            </encoder>
+        </appender>
+        <appender name="appenderFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <encoder>
+                <pattern>${PATTERN_ELASTIC}</pattern>
+            </encoder>
+            <file>${LOG_FILE}</file>
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <fileNamePattern>${LOG_FILE}.%d</fileNamePattern>
+                <maxHistory>50</maxHistory>
+            </rollingPolicy>
+        </appender>    
+        <root level="INFO">            
+            <appender-ref ref="appenderConsole" />
+            <appender-ref ref="appenderFile" />
+        </root>
+    </springProfile>
+    <springProfile name="dev">
+        <shutdownHook class="ch.qos.logback.core.hook.DelayingShutdownHook"/>
+        <include resource="org/springframework/boot/logging/logback/defaults.xml" />    
+        <property name="LOG_FILE" value="c:/log/servidor-configuracion.log"/>    
+        <property name="PATTERN_ELASTIC"  value="[%d{yyyy-MM-dd HH:mm:ss.SSS}] [${PID}] [${HOSTNAME}] [%thread] [%level] [%logger{36}@%method:%line] - %msg%n"/>
+        <appender name="appenderConsole" class="ch.qos.logback.core.ConsoleAppender">
+            <encoder>
+                <pattern>${PATTERN_ELASTIC}</pattern>
+                <!--<pattern>${CONSOLE_LOG_PATTERN}</pattern>-->
+                <charset>utf8</charset>
+            </encoder>
+        </appender>
+        <appender name="appenderFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <encoder>
+                <pattern>${PATTERN_ELASTIC}</pattern>
+                <!--<pattern>${FILE_LOG_PATTERN}</pattern>-->
+            </encoder>
+            <file>${LOG_FILE}</file>
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <fileNamePattern>${LOG_FILE}.%d</fileNamePattern>
+                <maxHistory>50</maxHistory>
+            </rollingPolicy>
+        </appender>    
+        <root level="INFO">
+            <appender-ref ref="appenderConsole" />
+            <appender-ref ref="appenderFile" />
+        </root>
+    </springProfile>
+</configuration>
